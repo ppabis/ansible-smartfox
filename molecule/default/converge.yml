@@ -1,0 +1,13 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+
+  vars:
+    - smartfox_admin_allowed_ips:
+      - "158.100.88.99"
+
+  tasks:
+    - name: "Include ppabis.smartfox"
+      include_role:
+        name: "ppabis.smartfox"

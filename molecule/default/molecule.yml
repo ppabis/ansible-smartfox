@@ -1,0 +1,30 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: ec2
+platforms:
+  - name: rocky8-arm
+    image: ami-0113ad83a378af551
+    instance_type: t4g.micro
+    vpc_subnet_id: subnet-abcdef12345678901
+    region: eu-central-1
+  - name: alma8-x86
+    image: ami-0b3d1809cc222924a
+    instance_type: t2.micro
+    vpc_subnet_id: subnet-abcdef12345678901
+    region: eu-central-1
+  - name: debian11-arm
+    image: ami-01f4ba7503a2650be
+    instance_type: t4g.nano
+    vpc_subnet_id: subnet-abcdef12345678901
+    region: eu-central-1
+  - name: ubuntu2004-x86
+    image: ami-06148e0e81e5187c8
+    instance_type: t2.nano
+    vpc_subnet_id: subnet-abcdef12345678901
+    region: eu-central-1
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
