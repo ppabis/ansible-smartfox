@@ -1,0 +1,20 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Make sure python3 is installed
+      package:
+        name: python3
+        state: present
+      become: true
+
+    - name: Enable swap
+      shell: |-
+        fallocate -l 4G /swapfile
+        chmod 600 /swapfile
+        mkswap /swapfile
+        swapon /swapfile
+        sh -c "echo '/swapfile swap swap defaults 0 0' >> /etc/fstab"
+      become: true
+      when: inventory_hostname == "rocky8-arm"
