@@ -1,0 +1,4 @@
+---
+# Debian
+java_source: java-11-openjdk-arm64
+java_package_name: openjdk-11-jre-headless

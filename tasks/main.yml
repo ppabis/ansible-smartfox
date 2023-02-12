@@ -1,0 +1,13 @@
+---
+- include_vars: "vars/java-{{ ansible_os_family }}.yml"
+- include_vars: "vars/packages-{{ ansible_os_family }}.yml"
+- include_vars: "vars/packages-common.yml"
+
+- import_tasks: tasks/prepare-environment.yml
+- import_tasks: tasks/version-detect.yml
+- import_tasks: tasks/download-smartfox.yml
+- import_tasks: tasks/replace-java.yml
+  when: ansible_architecture == "aarch64"
+- import_tasks: tasks/configure-smartfox.yml
+- import_tasks: tasks/install-smartfox.yml
+- import_tasks: tasks/zones-and-extensions.yml

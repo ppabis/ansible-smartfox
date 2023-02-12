@@ -1,0 +1,6 @@
+---
+extra_packages:
+  - libxml2-devel
+  - libxslt-devel
+  - gcc
+  - python3-devel

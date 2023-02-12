@@ -1,0 +1,20 @@
+---
+- name: Download SmartFox 2X
+  get_url:
+    url: "{{ smartfox_download_url }}"
+    dest: "/tmp"
+    mode: 0644
+    owner: "{{ smartfox_user }}"
+    group: "{{ smartfox_user }}"
+  register: smartfox_archive_tmp
+  when: current_version is not defined or current_version != smartfox_version
+
+- name: Extract SmartFox
+  unarchive:
+    src: "{{ smartfox_archive_tmp.dest }}"
+    dest: "{{ smartfox_target_directory }}"
+    remote_src: yes
+    owner: "{{ smartfox_user }}"
+    group: "{{ smartfox_user }}"
+    mode: 0755
+  when: current_version is not defined or current_version != smartfox_version

@@ -1,0 +1,28 @@
+---
+- name: Copy server.xml configuration (admin)
+  template:
+    src: templates/smartfox_server.xml.j2
+    dest: "{{ sfs2x_directory }}/config/server.xml"
+    owner: "{{ smartfox_user }}"
+    group: "{{ smartfox_user }}"
+    mode: 0660
+  notify: restart smartfox
+
+- name: Copy tomcat.xml configuration
+  template:
+    src: templates/tomcat_server.xml.j2
+    dest: "{{ sfs2x_directory }}/lib/apache-tomcat/conf/server.xml"
+    owner: "{{ smartfox_user }}"
+    group: "{{ smartfox_user }}"
+    mode: 0660
+  notify: restart smartfox
+
+- name: Copy keystore to tomcat directory
+  copy:
+    src: "files/{{ smartfox_ssl_keystore_file }}"
+    dest: "{{ sfs2x_directory }}/lib/apache-tomcat/conf/{{ smartfox_ssl_keystore_file }}"
+    owner: "{{ smartfox_user }}"
+    group: "{{ smartfox_user }}"
+    mode: 0400
+  notify: restart smartfox
+  when: smartfox_ssl_keystore_file != ""

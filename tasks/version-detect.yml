@@ -1,0 +1,19 @@
+---
+- name: Check if .install4j/i4jparams.conf exists
+  stat:
+    path: "{{ smartfox_target_directory }}/SmartFoxServer_2X/.install4j/i4jparams.conf"
+  register: i4j_stat
+  changed_when: false
+
+- name: Get current version of SmartFox from install4j
+  xml:
+    path: "{{ smartfox_target_directory }}/SmartFoxServer_2X/.install4j/i4jparams.conf"
+    xpath: "/config/general"
+    content: "attribute"
+  when: i4j_stat.stat.exists
+  register: i4j_conf
+
+- name: Extract value from install4j
+  set_fact:
+    current_version: "{{ (i4j_conf.matches | first).general.applicationVersion }}"
+  when: i4j_conf is defined and "count" in i4j_conf and i4j_conf.count > 0

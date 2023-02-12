@@ -1,0 +1,36 @@
+---
+- name: Copy all *.jar extensions
+  copy:
+    src: "files/extensions/"
+    dest: "{{ sfs2x_directory }}/extensions/"
+    owner: "{{ smartfox_user }}"
+    group: "{{ smartfox_user }}"
+    mode: 0644
+  notify: restart smartfox
+
+- name: Remove default zone
+  file:
+    path: "{{ sfs2x_directory }}/zones/BasicExamples.zone.xml"
+    state: absent
+  notify: restart smartfox
+
+- name: Copy all *.zone.xml files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ sfs2x_directory }}/zones/"
+    owner: "{{ smartfox_user }}"
+    group: "{{ smartfox_user }}"
+    mode: 0644
+  with_fileglob: "files/zones/*.zone.xml"
+  notify: restart smartfox
+
+- name: Toggle lock for uploading extensions via admin panel
+  file:
+    path: "{{ sfs2x_directory }}/config/UploadsLock.txt"
+    state: "{{ 'touch' if smartfox_lock_uploads else 'absent' }}"
+    modification_time: preserve
+    access_time: preserve
+    owner: "{{ smartfox_user }}"
+    group: "{{ smartfox_user }}"
+    mode: 0644
+  notify: restart smartfox

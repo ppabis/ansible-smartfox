@@ -1,0 +1,15 @@
+---
+- name: Copy SmartFox systemd service file
+  template:
+    src: templates/smartfox.service.j2
+    dest: /etc/systemd/system/smartfox.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable SmartFox service on boot
+  systemd:
+    name: smartfox
+    enabled: yes
+    daemon_reload: yes
+    state: started

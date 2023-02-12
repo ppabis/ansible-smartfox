@@ -1,0 +1,24 @@
+---
+- name: Make sure Java is installed (ARM)
+  package:
+    name: "{{ java_package_name }}"
+    state: present
+
+- name: Detect Java architecture
+  shell:
+    cmd: file -L {{ smartfox_target_directory }}/SmartFoxServer_2X/jre/bin/java
+  register: java_arch
+  changed_when: false
+
+- name: Remove Java for x86_64
+  file:
+    path: "{{ smartfox_target_directory }}/SmartFoxServer_2X/jre"
+    state: absent
+  when: java_arch.stdout is defined and java_arch.stdout.find("x86-64") != -1
+
+- name: Link Java for ARM
+  file:
+    src: "/usr/lib/jvm/{{ java_source }}"
+    dest: "{{ smartfox_target_directory }}/SmartFoxServer_2X/jre"
+    state: link
+  when: java_arch.stdout is defined and java_arch.stdout.find("x86-64") != -1

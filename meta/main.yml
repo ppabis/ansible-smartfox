@@ -1,0 +1,32 @@
+galaxy_info:
+  namespace: ppabis
+  role_name: smartfox
+  author: Piotr Pabis
+  description: SmartFox Server 2X Ansible role
+  company: ""
+
+  license: MIT
+
+  min_ansible_version: 2.1
+
+  platforms:
+  - name: EL
+    versions:
+    - 8
+  - name: Debian
+    versions:
+    - bullseye
+  - name: Ubuntu
+    versions:
+    - focal
+
+  galaxy_tags:
+    - game
+    - gameserver
+    - smartfox
+
+dependencies: []
+
+collections:
+  - community.general
+  - community.crypto

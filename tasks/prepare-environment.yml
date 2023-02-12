@@ -1,0 +1,26 @@
+---
+- name: Update apt cache (Debian/Ubuntu)
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  when: ansible_os_family == "Debian"
+
+- name: Install required packages
+  package:
+    name: "{{ common_packages + extra_packages }}"
+    state: present
+
+- name: Install lxml
+  pip:
+    name: lxml
+    state: present
+  poll: 10
+  async: 900
+
+- name: Ensure user smartfox exists
+  user:
+    name: "{{ smartfox_user }}"
+    shell: /bin/false
+    home: "{{ smartfox_target_directory }}"
+    state: present
+    system: yes

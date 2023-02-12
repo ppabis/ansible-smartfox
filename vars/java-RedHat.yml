@@ -1,0 +1,4 @@
+---
+# RedHat
+java_source: jre-11-openjdk
+java_package_name: java-11-openjdk-headless

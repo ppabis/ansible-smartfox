@@ -1,0 +1,15 @@
+[Unit]
+Description=SmartFoxServer 2X
+After=network.target
+
+[Service]
+Type=forking
+User={{ smartfox_user }}
+LimitNOFILE=100000
+WorkingDirectory={{ sfs2x_directory }}
+ExecStart={{ sfs2x_directory }}/sfs2x-service start
+ExecStop={{ sfs2x_directory }}/sfs2x-service stop
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
