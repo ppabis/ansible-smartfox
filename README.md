@@ -7,6 +7,15 @@ there are no breaking changes for config). Learn more about
 [license and use policy](https://www.smartfoxserver.com/support/faq#BG01) of
 SmartFox on the official website.
 
+Platform Support
+----------------
+Designed and tested on:
+- Ubuntu 20.04
+- Debian 10
+- Rocky Linux 8
+- AlmaLinux 8
+- x86_64 and ARM64 architectures
+
 Requirements
 ------------
 - `become: yes` (to root)

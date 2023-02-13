@@ -2,7 +2,7 @@ galaxy_info:
   namespace: ppabis
   role_name: smartfox
   author: Piotr Pabis
-  description: SmartFox Server 2X Ansible role
+  description: SmartFoxServer 2X Ansible role
   company: ""
 
   license: MIT
