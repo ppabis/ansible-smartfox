@@ -5,11 +5,11 @@ smartfox_ssl_keystore_file: mykeystore.jks
 smartfox_ssl_keystore_password: VeRySeCrEtPa5s
 smartfox_admin_user: Gamemaster
 smartfox_admin_password: G4M3mast3r
-smartfox_tcp_port: 9935
+smartfox_tcp_port: 9933
 smartfox_udp_port: "{{ smartfox_tcp_port }}"
 smartfox_admin_allowed_ips:
-  - "1.2.3.4"
+  - "0.0.0.0"
 smartfox_target_directory: "/opt/smartfox"
 sfs2x_directory: "{{ smartfox_target_directory }}/SmartFoxServer_2X/SFS2X"
 smartfox_user: smartfox
-smartfox_lock_uploads: false
+smartfox_lock_uploads: true
