@@ -5,12 +5,14 @@
   </socketAddresses>
   <ipFilter>
     <addressBlackList>
-      <string>1.2.3.4</string>
+      {%- for ip in smartfox_banned_ips %}
+      <string>{{ ip }}</string>
+      {% endfor %}
     </addressBlackList>
     <addressWhiteList>
       <string>127.0.0.1</string>
     </addressWhiteList>
-    <maxConnectionsPerAddress>9999999</maxConnectionsPerAddress>
+    <maxConnectionsPerAddress>{{ smartfox_max_connections_per_address }}</maxConnectionsPerAddress>
   </ipFilter>
   <flashCrossdomainPolicy>
     <useMasterSocketPolicy>true</useMasterSocketPolicy>
