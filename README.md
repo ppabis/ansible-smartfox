@@ -2,10 +2,8 @@ SmartfoxServer 2X Ansible Role
 =========
 Unofficial Ansible role that installs and configures specific version of
 SmartfoxServer 2X on Linux. Can also upgrade the version to some extent (if
-there are no breaking changes for config). Learn more about
-[SmartFox here](https://smartfoxserver.com). Also remember to read the
-[license and use policy](https://www.smartfoxserver.com/support/faq#BG01) of
-SmartFox on the official website.
+there are no breaking changes for config). Learn more about [SmartFox here](https://smartfoxserver.com). Also remember to read the
+[license and use policy](https://www.smartfoxserver.com/support/faq#BG01) of SmartFox on the official website.
 
 Platform Support
 ----------------
@@ -46,8 +44,8 @@ them to understand what's going on.
 ### Configuration
 - `smartfox_ssl_keystore_file` - default `mykeystore.jks` copied from the role.
   **You should change this and provide a file!**
-- `smartfox_ssl_keystore_password` - default `VeRySeCrEtPa5s` - password for the
-  JKS. **You should change this too!**
+- `smartfox_ssl_keystore_password` - default `VeRySeCrEtPa5s` - password for the JKS.
+  **You should change this too!**
 - `smartfox_admin_user` - default `Gamemaster` - initial admin username.
 - `smartfox_admin_password` - default `G4M3mast3r` - initial admin password.
   **Use your own.**
@@ -90,12 +88,12 @@ Example Playbook
     - role: ppabis.smartfox
 ```
 
-Also `files/` directory with your own `extensions/`, `zones/` and
-`keystore.jks`.
+Also `files/` directory with your own `extensions/`, `zones/` and `keystore.jks`.
 
 License
 -------
-MIT
+MIT - the playbook/role
+The SmartFox license is available on the official website.
 
 Author Information
 ------------------
